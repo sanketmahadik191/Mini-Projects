@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Card Project</title>
+    <!-- Google Font -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@500&display=swap" rel="stylesheet" />
+    <!-- Stylesheet -->
+    <link rel="stylesheet" href="./style.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+</head>
+<!-- <i style="font-size:15px" class="fa">&#xf021;</i> -->
+
+<body>
+    <button id="theme-toggle" onclick="toggleTheme()">Theme</button>
+    <main>
+        <h1>User Info Card</h1>
+        <hr class="bold">
+        <div class="user">
+            <div class="enterInput">
+                <span class="label">First Name:</span>
+                <span id="first-name" class="input"></span>
+            </div>
+            <hr>
+            <div class="enterInput">
+                <span class="label">Last Name:</span>
+                <span id="last-name" class="input"></span>
+            </div>
+            <hr>
+            <div class="enterInput">
+                <span class="label">Country:</span>
+                <span id="country" class="input"> </span>
+            </div>
+            <hr>
+            <div class="enterInput">
+                <span class="label">Phone No.:</span>
+                <span id="phone-number" class="input"></span>
+            </div>
+            <hr>
+            <div class="enterInput">
+                <span class="label">State:</span>
+                <span id="state" class="input"></span>
+            </div>
+            <hr>
+            <div class="enterInput">
+                <span class="label">City:</span>
+                <span id="city" class="input"></span>
+            </div>
+            <hr>
+            <div class="enterInput">
+                <span class="label">Village:</span>
+                <span id="village" class="input"></span>
+            </div>
+
+        </div>
+        <hr class="bold">
+        <button class="reset" onclick="resetAll()">Reset</button>
+
+    </main>
+    <script src="https://kit.fontawesome.com/08f45ad4dd.js" crossorigin="anonymous"></script>
+    <script src="./script.js"></script>
+</body>
+
+</html>
