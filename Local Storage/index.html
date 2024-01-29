@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Auto Save TextArea</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            transition: background-color 0.5s;
+        }
+        
+        main {
+            background-color: #fff;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            padding: 20px;
+            max-width: 600px;
+            width: 90%;
+            display: flex;
+            flex-direction: column;
+            position: relative;
+        }
+        
+        h1 {
+            text-align: center;
+            margin-top: 0;
+            color: #333;
+        }
+        
+        textarea {
+            border: 2px solid #ddd;
+            padding: 10px;
+            margin: 10px 0;
+            height: 250px;
+            width: 90%;
+            font-size: 16px;
+            resize: none;
+            align-self: center;
+        }
+        
+        .clear {
+            background-color: #ff6347;
+            border: none;
+            color: #fff;
+            padding: 10px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+            transition: background-color 0.3s;
+            align-self: center;
+        }
+        
+        .clear:hover {
+            background-color: #d32f2f;
+        }
+        /* Dark theme */
+        
+        #toggleTheme {
+            position: absolute;
+            top: 0;
+            right: 0;
+            margin: 10px;
+            width: auto;
+        }
+        
+        body.dark-theme {
+            background-color: #333;
+            color: #fff;
+        }
+        /* Dark theme  */
+        
+        body.dark-theme main {
+            background-color: #444;
+            box-shadow: 0 0 10px rgba(255, 255, 255, 0.1);
+        }
+        
+        body.dark-theme h1 {
+            color: #fff;
+        }
+        
+        body.dark-theme textarea {
+            border-color: #666;
+            color: #fff;
+            background-color: #222;
+        }
+        
+        body.dark-theme .clear {
+            background-color: #ff6347;
+        }
+    </style>
+</head>
+
+<body>
+    <main>
+        <h1>Auto Save TextArea</h1>
+        <textarea class="in" placeholder="Enter Text Here..."></textarea>
+        <button class="clear">Clear All</button>
+        <audio id="keyboard-sound">
+            <source src="./keyboard.wav" type="audio/mpeg">
+        </audio>
+        <button id="toggleTheme">Dark Mode</button>
+    </main>
+
+    <script>
+        const textSave = document.querySelector(".in");
+        const clearAll = document.querySelector(".clear");
+        const sound = document.getElementById("keyboard-sound");
+        const toggleThemeButton = document.getElementById("toggleTheme");
+
+        textSave.addEventListener('keydown', function() {
+            sound.play();
+        })
+
+        function autoSave() {
+            localStorage.setItem("save", textSave.value);
+        }
+
+        window.onload = () => {
+            textSave.value = localStorage.getItem("save");
+        }
+
+        textSave.addEventListener("input", autoSave);
+
+        clearAll.addEventListener('click', function() {
+            localStorage.clear();
+            textSave.value = "";
+        });
+
+        // Toggle themes dark and light
+        toggleThemeButton.addEventListener('click', function() {
+            if (toggleThemeButton.innerHTML === "Dark Mode") {
+                toggleThemeButton.innerHTML = "Light Mode";
+            } else {
+                toggleThemeButton.innerHTML = "Dark Mode"
+            }
+            document.body.classList.toggle('dark-theme');
+        });
+    </script>
+</body>
+
+</html>
