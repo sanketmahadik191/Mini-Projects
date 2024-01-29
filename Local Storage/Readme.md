@@ -1,6 +1,6 @@
 # Local Storage
 
-## [Hosted Link] (https://sanketmahadik191.github.io/Mini-Projects/Local%20Storage/index.html)
+## [Hosted Link](https://sanketmahadik191.github.io/Mini-Projects/Local%20Storage/index.html)
 
 ## UI
 
