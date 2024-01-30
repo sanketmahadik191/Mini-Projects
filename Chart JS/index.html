@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Real-Time Chart</title>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <style>
+        div {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        #chart {
+            max-width: 60vw;
+            max-height: 60vh;
+        }
+    </style>
+</head>
+
+<body>
+    <div>
+        <h1>Rael-Time Data Chart</h1>
+        <canvas id="chart"></canvas>
+    </div>
+
+    <script>
+        const ctx = document.getElementById('chart').getContext('2d');
+        let chart;
+        const initialData = {
+            labels: [],
+            datasets: [{
+                label: 'Black',
+                data: [],
+                borderColor: 'black',
+                borderWidth: 2,
+                fill: false,
+            }, {
+                label: 'Red',
+                data: [],
+                borderColor: 'red',
+                borderWidth: 2,
+                fill: false,
+            }, {
+                label: 'Blue',
+                data: [],
+                borderColor: 'blue',
+                borderWidth: 2,
+                fill: false,
+            }],
+        };
+        const chartConfig = {
+            type: 'line',
+            data: initialData,
+            options: {
+                scales: {
+                    x: {
+                        type: 'linear',
+                        position: 'bottom',
+                        title: {
+                            display: true,
+                            text: 'Time →',
+                        },
+                    },
+                    y: {
+                        beginAtZero: true,
+                        title: {
+                            display: true,
+                            text: 'Value →',
+                        },
+                    },
+                },
+                animation: false,
+            },
+        };
+        chart = new Chart(ctx, chartConfig);
+
+        function addData() {
+            const newData1 = Math.random() * 11;
+            const newData2 = Math.random() * 11;
+            const newData3 = Math.random() * 11;
+            chart.data.labels.push(chart.data.labels.length);
+            chart.data.datasets[0].data.push(newData1);
+            chart.data.datasets[1].data.push(newData2);
+            chart.data.datasets[2].data.push(newData3);
+            chart.update();
+        }
+        setInterval(addData, 1500);
+    </script>
+</body>
+
+</html>
