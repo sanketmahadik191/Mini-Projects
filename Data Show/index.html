@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Interactive Data Visualization</title>
+    <!-- Add any additional CSS links or styles here -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@2.8.0"></script>
+    <style>
+        /* Add your CSS styles here */
+        
+        body {
+            height: 90vh;
+            overflow-y: hidden;
+        }
+        
+        #myChart {
+            height: 90%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 20px;
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Container for the chart -->
+    <canvas id="myChart"></canvas>
+
+    <!-- Import Chart.js library -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.2/anime.min.js"></script>
+    <script>
+        var ctx = document.getElementById('myChart').getContext('2d');
+        var chart = new Chart(ctx, {
+            // The type of chart we want to create
+            type: 'bar',
+            // The data for our dataset
+            data: {
+                labels: ['January', 'February', 'March', 'April', 'May', 'June', 'July'],
+                datasets: [{
+                    label: 'Sales Per Month',
+                    backgroundColor: 'rgb(255, 99, 132)',
+                    borderColor: 'rgb(255, 99, 132)',
+                    data: [15, 25, 40, 5, 20, 30, 45],
+                    // backgroundColor: fillPattern
+                }],
+            },
+            // Configuration options go here
+            options: {
+
+                animation: {
+                    onComplete: () => {
+                        delayed = true;
+                    },
+                    delay: (context) => {
+                        return 10;
+                    },
+                },
+                scales: {
+                    x: {
+                        stacked: true,
+                    },
+                    y: {
+                        stacked: true
+                    }
+                },
+
+
+                title: {
+                    display: true,
+                    text: 'Interactive Data Visualization',
+                    fontSize: 25,
+                    fontStyle: 'bold'
+                },
+                layout: {
+                    padding: {
+                        left: 50,
+                        right: 50,
+                        top: 50,
+                        bottom: 100
+                    }
+                },
+                legend: {
+                    display: true,
+                    labels: {
+                        fontColor: 'black',
+                        fontSize: 12
+                    }
+                },
+                events: ['click'],
+                scales: {
+                    yAxes: [{
+                        ticks: {
+                            beginAtZero: true
+                        }
+                    }]
+                }
+            }
+        });
+    </script>
+</body>
+
+</html>
